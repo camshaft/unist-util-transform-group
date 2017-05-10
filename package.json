@@ -1,0 +1,12 @@
+{
+  "name": "unist-util-transform-group",
+  "version": "1.0.0",
+  "description": "make multiple transformations in a single pass",
+  "main": "index.js",
+  "repository": "https://github.com/camshaft/unist-util-transform-group.git",
+  "author": "Cameron Bytheway <bytheway.cameron@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "unist-util-transform": "^1.0.0"
+  }
+}
