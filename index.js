@@ -1,17 +1,20 @@
 var normalize = require('unist-util-transform').normalize;
+var slice = [].slice;
 
 module.exports = function createTransformGroup(passes) {
   passes = passes.map(normalize);
 
   return {
-    enter: function(node, index, parent) {
+    enter: function(node) {
+      var args = slice.call(arguments, 1);
       return passes.reduce(function(node, ins) {
-        return ins.enter(node, index, parent);
+        return ins.enter.apply(ins, [node].concat(args));
       }, node);
     },
-    exit: function(node, index, parent) {
+    exit: function(node) {
+      var args = slice.call(arguments, 1);
       return passes.reduce(function(node, ins) {
-        return ins.exit(node, index, parent);
+        return ins.exit.apply(ins, [node].concat(args));
       }, node);
     }
   };
